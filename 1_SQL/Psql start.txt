@@ -1,0 +1,11 @@
+
+rm -rf /flask_docker_app
+
+
+sudo docker-compose --project-name postgres-client -f docker-compose.yml up --build -d
+sudo docker-compose --project-name postgres-client -f docker-compose.yml run --rm postgres-client	
+
+rm -rf /tmp/data; unzip data.zip -d  /tmp/data
+sh /home/load_data.sh
+
+psql --host $APP_POSTGRES_HOST -U postgres

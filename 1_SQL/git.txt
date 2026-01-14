@@ -1,0 +1,45 @@
+git add  filename # stage
+git status
+git commit - m ""
+
+git -C dental reset --hard HEAD~1
+
+
+git merge 1 2
+git diff head..head~1
+
+git checkout -- filname    # unstage file
+
+git remote -v
+git remote add name URL
+git pull name branch
+
+git push origin master
+
+
+
+
+git add Project_SQL.ipynb
+git commit -m "add project ipynb"
+git push origin master
+
+git pull origin master
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ or create a new repository on the command line
+echo "# EgorovRV_SQL_Project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/RajahRUS/EgorovRV_SQL_Project.git
+git push -u origin master
+…or push an existing repository from the command line
+git remote add origin https://github.com/RajahRUS/EgorovRV_SQL_Project.git
+git push -u origin master
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.

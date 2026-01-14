@@ -1,0 +1,46 @@
+
+
+-- Создание двух таблиц из слайдов 15,17
+
+CREATE TABLE IF NOT EXISTS form2 (
+    film varchar(255),
+	director varchar(255),
+	oskar_flag boolean,
+	IMDB_rating float
+	);
+	
+INSERT INTO form2 VALUES ('Энни Холл', 'Вуди Аллен', 'True' , 8);
+
+INSERT INTO form2 VALUES ('Быть Джоном Малковичем', 'Спайк Джонс', 'True' , 7);
+INSERT INTO form2 VALUES ('Любовь и смерть', 'Вуди Аллен', 'False' , 8);
+
+
+
+CREATE TABLE IF NOT EXISTS form3 (
+    film varchar(255),
+	oskar_flag boolean,
+	location varchar(255)
+	);
+
+INSERT INTO form3 VALUES ('Энни Холл',  'True' , 'США');
+INSERT INTO form3 VALUES ('Быть Джоном Малковичем', 'True' , 'США');
+INSERT INTO form3 VALUES ('Любовь и смерть', 'False' , 'Россия');
+
+
+
+-- Результат
+
+postgres=# select * from form2                                                                                      
+;select * from form3;
+          film          |  director   | oskar_flag | imdb_rating 
+------------------------+-------------+------------+-------------
+ Энни Холл              | Вуди Аллен  | t          |           8
+ Быть Джоном Малковичем | Спайк Джонс | t          |           7
+ Любовь и смерть        | Вуди Аллен  | f          |           8
+(3 rows)
+          film          | oskar_flag | location 
+------------------------+------------+----------
+ Энни Холл              | t          | США
+ Быть Джоном Малковичем | t          | США
+ Любовь и смерть        | f          | Россия
+(3 rows)

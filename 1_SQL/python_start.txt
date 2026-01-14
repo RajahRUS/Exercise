@@ -1,0 +1,44 @@
+cd flask_docker_app/python_interactions
+
+
+sudo docker-compose --project-name py-db -f docker-compose.yml up --build -d
+
+sudo docker-compose --project-name py-db -f docker-compose.yml run --rm python-db
+
+
+
+
+bash /home/load_data.sh
+
+
+import psycopg2
+
+
+
+
+sudo docker-compose --project-name mongo-client -f docker-compose.yml ps
+                                  Name                                               Command              State       Ports
+-----------------------------------------------------------------------------------------------------------------------------
+a93c0a29e67e_a93c0a29e67e_a93c0a29e67e_mongoclient_alpine-mongo-client_1   /bin/sh                       Exit 137
+mongoclient_mongodb_1                                                      docker-entrypoint.sh mongod   Up         27017/tcp
+
+$  sudo docker-compose --project-name py-db -f docker-compose.yml rm --all;
+
+
+
+sudo docker stop $(sudo docker ps -a -q)
+sudo docker rm $(sudo docker ps -a -q)
+sudo docker network prune
+
+
+docker network ls
+
+
+psql --host $APP_POSTGRES_HOST -U postgres
+
+
+sudo docker ps 
+docker exec e520d652a667  sh -c "ls"
+docker cp  e520d652a667:/home/jovyan/Project_SQL.ipynb /home/rajahrus/Rajah_RUS_Rep1
+
+docker-machine scp /home/rajahrus/Rajah_rus_rep1/SQL_select_create_view.sh 520d652a667:/home/jovyan/

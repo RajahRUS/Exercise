@@ -1,0 +1,43 @@
+
+SELECT ('Егоров Р.В.');
+
+--1
+
+psql --host $APP_POSTGRES_HOST -U postgres -c '
+  CREATE TABLE IF NOT EXISTS keywords (
+    id bigint,
+    tags text
+  );'
+ 
+--2  
+ psql --host $APP_POSTGRES_HOST -U postgres -c \
+    "\\copy keywords FROM '/data/keywords.csv' DELIMITER ',' CSV HEADER";
+
+
+3--
+	
+with top_rated as 
+(
+		
+		select movieid, avg(rating) avg_rating from 
+		(
+		SELECT movieid, 
+		rating,
+		count (userid) over (partition by movieid) as rate_count-- order by 
+		from public.ratings 
+	    ) rr
+		where rate_count > 50
+		group by movieid
+		order by avg_rating desc
+) 
+SELECT tr.movieid, tr.avg_rating, k.tags
+into top_rated_tags
+from top_rated tr 
+inner join public.keywords k 
+on tr.movieid = k.id
+order by 2 desc;
+	
+--4	
+
+postgres=# \copy (select * from top_rated_tags) to '/data/ratings.tsv' with delimiter E'\t';
+COPY 242

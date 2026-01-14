@@ -1,0 +1,7 @@
+sudo docker-compose --project-name mongo-client -f docker-compose.yml up --build -d
+
+docker-compose -f docker-compose.yml down
+
+docker-compose -f docker-compose.yml up
+
+sudo docker-compose --project-name mongo-client -f docker-compose.yml run --rm mongo-client
